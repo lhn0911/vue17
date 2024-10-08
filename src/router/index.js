@@ -14,6 +14,9 @@ const ListPost = () => import("@/views/ListPost.vue");
 const PostDetail = () => import("@/views/PostDetail.vue");
 const PostNotFound = () => import("@/views/PostNotFound.vue");
 
+import ListProduct from "../components/ListProduct.vue";
+import ProductDetail from "../components/ProductDetail.vue";
+
 const isLoggedIn = false;
 
 const routes = [
@@ -80,10 +83,8 @@ const routes = [
     path: "/posts/:id",
     name: "PostDetail",
     component: PostDetail,
-
     beforeEnter: (to, from, next) => {
       const postId = parseInt(to.params.id);
-
       const posts = [1, 2, 3];
       if (posts.includes(postId)) {
         next();
@@ -96,6 +97,16 @@ const routes = [
     path: "/post-not-found",
     name: "PostNotFound",
     component: PostNotFound,
+  },
+  {
+    path: "/list-product",
+    name: "ListProduct",
+    component: ListProduct,
+  },
+  {
+    path: "/product-detail/:id",
+    name: "ProductDetail",
+    component: ProductDetail,
   },
   {
     path: "/:pathMatch(.*)*",
